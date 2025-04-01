@@ -3,8 +3,12 @@ package me.kadirlofca.java_sql_assignment;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.opencsv.CSVReader;
+import com.opencsv.CSVReaderBuilder;
+
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
@@ -34,19 +38,35 @@ public class JavaSqlAssignmentApplication {
 		BufferedReader threadReader = new BufferedReader(new InputStreamReader(System.in));
 		
 		if(threadReader.readLine().equals("multi")) {
+			System.out.println("Multi threaded process started!\n.\n.");
 			runMultiThreadedProcess();
 		}
 		else {
+			System.out.println("Single threaded process started!\n.\n.");
 			runSingleThreadedProcess();
 		}
 	}
 
 	public static void runSingleThreadedProcess() {
-		System.out.println("SINGLE THREADED");
+		try {
+			CSVReader reader = new CSVReaderBuilder(new FileReader("employee_data.csv")).build();
+			for(String[] nextLine : reader) {
+				System.out.println(nextLine[0] + nextLine[1] + "etc...");
+			}
+		}
+		catch (Exception e) {
+			System.err.println(e);
+		}
+
+		// CSVReader reader = new CSVReaderBuilder(new FileReader("dataset.csv")).build();
+		// CSVIterator iterator = new CSVIterator(reader);
+		// for(String[] nextLine : iterator) {
+		// 	// nextLine[] is an array of values from the line
+		// 	System.out.println(nextLine[0] + nextLine[1] + "etc...");
+     	// }
 	}
 
 	public static void runMultiThreadedProcess() {
-		System.out.println("MULTI THREADED");
 	}
 
 	public static void main(String[] args) {
@@ -59,24 +79,5 @@ public class JavaSqlAssignmentApplication {
 		catch (IOException e) {
 			System.out.println(e);
 		}
-
-		// CSVReader reader = new CSVReaderBuilder(new FileReader("dataset.csv")).build();
-		// CSVIterator iterator = new CSVIterator(reader);
-		// for(String[] nextLine : iterator) {
-		// 	// nextLine[] is an array of values from the line
-		// 	System.out.println(nextLine[0] + nextLine[1] + "etc...");
-     	// }
-
-	// try {
-	// 	CSVReader reader = new CSVReaderBuilder(new FileReader("dataset.csv")).build();
-	// 	String [] nextLine;
-	// 	while ((nextLine = reader.readNext()) != null) {
-	// 		for(int i = 0; i < )
-	// 	   System.out.println(nextLine[0] + nextLine[1] + "etc...");
-	// 	}
-	// }
-	// catch (Exception e) {
-	// 	System.err.println(e);
-	// }
 	}
 }
