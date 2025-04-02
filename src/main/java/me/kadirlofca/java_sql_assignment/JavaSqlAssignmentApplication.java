@@ -50,15 +50,17 @@ public class JavaSqlAssignmentApplication {
 	}
 
 	private static void runSingleThreadedProcess() {
-		try {
-			CSVReader reader = new CSVReaderBuilder(new FileReader("employee_data.csv")).build();
-			for(String[] nextLine : reader) {
-				System.out.println(nextLine[0] + nextLine[1] + "etc...");
-			}
-		}
-		catch (Exception e) {
-			System.err.println(e);
-		}
+		System.out.println("Single threaded not implemented yet.");
+		
+		// try {
+		// 	CSVReader reader = new CSVReaderBuilder(new FileReader("employee_data.csv")).build();
+		// 	for(String[] nextLine : reader) {
+		// 		System.out.println(nextLine[0] + nextLine[1] + "etc...");
+		// 	}
+		// }
+		// catch (Exception e) {
+		// 	System.err.println(e);
+		// }
 
 		// CSVReader reader = new CSVReaderBuilder(new FileReader("dataset.csv")).build();
 		// CSVIterator iterator = new CSVIterator(reader);
@@ -70,11 +72,18 @@ public class JavaSqlAssignmentApplication {
 
 	private static void runMultiThreadedProcess() {
 		try {
-			FileReader reader = new FileReader("employee_data_valid.csv");
-			List<Employee> employees = new CsvToBeanBuilder<Employee>(reader)
-					.withType(Employee.class)
-					.build()
-					.parse();
+			EmployeeValidator employeeValidator = new EmployeeValidator();
+
+			FileReader reader = new FileReader("employee_data.csv");
+			CSVReaderBuilder builder = new CSVReaderBuilder(reader);
+			CSVReader csvReader = builder
+				.withLineValidator(employeeValidator)
+                .build();
+
+			List<Employee> employees = new CsvToBeanBuilder<Employee>(csvReader)	
+				.withType(Employee.class)
+				.build()
+				.parse();
 	
 			for (Employee employee : employees) {
 				System.out.println(employee.Full_Name);

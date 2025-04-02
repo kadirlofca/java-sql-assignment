@@ -1,11 +1,11 @@
 Employee_ID,Full_Name,Email,Phone_Number,Date_of_Joining,Salary,Department,Status,Manager_ID,Job_Title,Gender,Marital_Status,DOB,Address,City,State,Country,Zip_Code,Emergency_Contact,Emergency_Contact_Name
-84499,John Doe,johndoe@example.com,5551234,2021/30/02,58954.42,HR,Active,28160,Manager,Female,Married,1990/05/23,123 Elm St Springfield,California,USA,90210,555-1234,Jane Doe
-70743,Jane Smith,janesmith@example.com,555-123-4567,2021-14-25,67234.89,Engineering,Inactive,92984,Engineer,Male,Single,1985-11-10,456 Oak Ave Chicago,Texas,Canada,10001,555-9876,John Smith
-81347,Alice Brown,alicebrown@example.com,12345678901,15-11-2021,45230.13,Sales,Terminated,37492,Sales Executive,Female,Divorced,03/15/1992,789 Pine Blvd Boston,Florida,India,XYZ123,555-1111,Michael Brown
-20394,Charlie Green,charliegreen@example.com,1234-5678,2022-01-45,73211.54,Marketing,On Leave,45912,Developer,Female,Married,1990-07-30,234 Maple Rd Austin,New York,UK,99999,555-2222,Rebecca Green
-94402,Olivia White,oliviawhite@example.com,55598765432,01/99/2020,92458.30,HR,Suspended,80175,Manager,Male,Single,1987-09-10,567 Birch Ln Miami,IncorrectState1,USA,ABCDE,555-3333,Samuel White
-68204,Robert Black,robertblack@example.com,1234-567890,2021/30/02,56345.67,Engineering,Active,98214,Engineer,Female,Divorced,1993-22-12,890 Pine St Denver,IncorrectState2,India,90210,555-4444,Anna Black
-30715,Mary Scott,maryscott@example.com,5551234,2022-01-45,65873.45,Sales,Active,75623,Sales Executive,Female,Married,1988-11-05,123 Cedar Dr San Francisco,Florida,Canada,10001,555-5555,James Scott
-52981,James Adams,jamesadams@example.com,555-123-4567,2022-01-45,94382.72,Engineering,On Leave,81724,Developer,Male,Married,1986/06/17,321 Birch St Los Angeles,Texas,USA,99999,555-6666,Susan Adams
-82934,Eve Harris,eveharris@example.com,1234-5678,2021-14-25,73129.51,Marketing,Inactive,24973,Sales Executive,Female,Single,1994-08-24,567 Willow Rd New York,California,Canada,ABCDE,555-7777,David Harris
-23781,William Clark,williamclark@example.com,12345678901,15-11-2021,82691.40,HR,Terminated,90475,Manager,Male,Divorced,02-1983-11,678 Elm St San Jose,New York,Mars,90210,555-8888,Sarah Clark
+84499,John Doe,johndoe@example.com,5551234,2021-02-30,58954.42,HR,Active,28160,Manager,Female,Married,1990-05-23,123 Elm St,Springfield,California,USA,90210,555-1234,Jane Doe
+70743,J@ne Smith,janesmith@example.com,555-123-4567,2021-12-25,67234.89,Engineering,Inactive,92984,Engineer,Male,Single,1985-11-10,456 Oak Ave,Chicago,Texas,Canada,10001,555-9876,John Smith
+81347,Alic3 Brown,alicebrown@example.com,12345678901,2021-11-15,45230.13,Sales,Terminated,37492,Sales Executive,Female,Divorced,1992-03-15,789 Pine Blvd,Boston,Florida,India,XYZ123,555-1111,Michael Brown
+20394,Charlie Green,charliegreen@example.com,1234-5678,2022-01-01,73211.54,Marketing,On Leave,45912,Developer,Female,Married,1990-07-30,234 Maple Rd,Austin,New York,UK,99999,555-2222,Rebecca Green
+94402,Oliv1a White,oliviawhite@example.com,55598765432,2020-01-01,92458.30,HR,Suspended,80175,Manager,Male,Single,1987-09-10,567 Birch Ln,Miami,Florida,USA,ABCDE,555-3333,Samuel White
+68204,R0bert Black,robertblack@example.com,1234-567890,2021-12-30,56345.67,Engineering,Active,98214,Engineer,Female,Divorced,1993-12-22,890 Pine St,Denver,Colorado,India,90210,555-4444,Anna Black
+30715,Mary.Scott,maryscott@example.com,5551234,2022-01-01,65873.45,Sales,Active,75623,Sales Executive,Female,Married,1988-11-05,123 Cedar Dr,San Francisco,Florida,Canada,10001,555-5555,James Scott
+52981,James Adams,jamesadams@example.com,555-123-4567,2022-01-01,94382.72,Engineering,On Leave,81724,Developer,Male,Married,1986-06-17,321 Birch St,Los Angeles,Texas,USA,99999,555-6666,Susan Adams
+82934,Eve_Harris,eveharris@example.com,1234-5678,2021-12-25,73129.51,Marketing,Inactive,24973,Sales Executive,Female,Single,1994-08-24,567 Willow Rd,New York,California,Canada,ABCDE,555-7777,David Harris
+23781,William Clark,williamclark@example.com,12345678901,2021-11-15,82691.40,HR,Terminated,90475,Manager,Male,Divorced,1983-11-02,678 Elm St,San Jose,New York,Mars,90210,555-8888,Sarah Clark
