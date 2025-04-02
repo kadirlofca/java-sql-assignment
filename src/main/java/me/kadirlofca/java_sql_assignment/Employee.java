@@ -1,4 +1,5 @@
 package me.kadirlofca.java_sql_assignment;
+
 import com.opencsv.bean.CsvBindByName;
 
 public class Employee {
@@ -6,7 +7,7 @@ public class Employee {
     private String Employee_ID;
 
     @CsvBindByName
-    private String Full_Name;
+    public String Full_Name;
     
     @CsvBindByName
     private String Email;

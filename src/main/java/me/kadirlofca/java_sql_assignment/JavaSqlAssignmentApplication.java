@@ -5,12 +5,14 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.opencsv.CSVReader;
 import com.opencsv.CSVReaderBuilder;
+import com.opencsv.bean.CsvToBeanBuilder;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.List;
 
 @SpringBootApplication
 public class JavaSqlAssignmentApplication {
@@ -33,21 +35,21 @@ public class JavaSqlAssignmentApplication {
 		}
 	}
 
-	public static void runThreadSelectionSequence() throws IOException {
-		System.out.println(".\n.\nFor multi threaded process, enter 'multi'.\nEnter anything else for single threaded process.");
+	private static void runThreadSelectionSequence() throws IOException {
+		System.out.println(".\n.\nFor single threaded process, enter 'single'.\nEnter anything else for multi threaded process.");
 		BufferedReader threadReader = new BufferedReader(new InputStreamReader(System.in));
 		
-		if(threadReader.readLine().equals("multi")) {
-			System.out.println("Multi threaded process started!\n.\n.");
-			runMultiThreadedProcess();
-		}
-		else {
+		if(threadReader.readLine().equals("single")) {
 			System.out.println("Single threaded process started!\n.\n.");
 			runSingleThreadedProcess();
 		}
+		else {
+			System.out.println("Multi threaded process started!\n.\n.");
+			runMultiThreadedProcess();
+		}
 	}
 
-	public static void runSingleThreadedProcess() {
+	private static void runSingleThreadedProcess() {
 		try {
 			CSVReader reader = new CSVReaderBuilder(new FileReader("employee_data.csv")).build();
 			for(String[] nextLine : reader) {
@@ -66,7 +68,21 @@ public class JavaSqlAssignmentApplication {
      	// }
 	}
 
-	public static void runMultiThreadedProcess() {
+	private static void runMultiThreadedProcess() {
+		try {
+			FileReader reader = new FileReader("employee_data_valid.csv");
+			List<Employee> employees = new CsvToBeanBuilder<Employee>(reader)
+					.withType(Employee.class)
+					.build()
+					.parse();
+	
+			for (Employee employee : employees) {
+				System.out.println(employee.Full_Name);
+			}
+		}
+		catch (Exception e) {
+			System.err.println(e);
+		}
 	}
 
 	public static void main(String[] args) {
