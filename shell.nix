@@ -7,6 +7,7 @@ pkgs.mkShell {
         visualstudioexptteam.vscodeintellicode
         vscjava.vscode-java-debug
         vscjava.vscode-java-pack
+        vscjava.vscode-java-test
         vscjava.vscode-maven
         mechatroner.rainbow-csv
         redhat.java

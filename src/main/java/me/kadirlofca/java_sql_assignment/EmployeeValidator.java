@@ -47,9 +47,7 @@ public class EmployeeValidator implements LineValidator {
         String email = columns[2];
         if(!satisfiesEmail(email)){
              return false;           
-        }
-
-        
+        }     
 
         return true;
     }
