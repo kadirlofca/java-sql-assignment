@@ -5,9 +5,10 @@ pkgs.mkShell {
     (pkgs.vscode-with-extensions.override {
       vscodeExtensions = with pkgs.vscode-extensions; [
         visualstudioexptteam.vscodeintellicode
+        vscjava.vscode-java-debug
         vscjava.vscode-java-pack
         vscjava.vscode-maven
-        vscjava.vscode-java-debug
+        mechatroner.rainbow-csv
         redhat.java
       ];
     })

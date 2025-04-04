@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import com.opencsv.CSVReader;
 import com.opencsv.CSVReaderBuilder;
 import com.opencsv.bean.CsvToBeanBuilder;
+import com.opencsv.exceptions.CsvValidationException;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -22,9 +23,7 @@ public class JavaSqlAssignmentApplication {
 	}
 
 	private static void runFileValidationSequence() throws IOException {
-		System.out.println(".\n.");
 		System.out.println("If you haven't already, please exit this tool and place your 'employee_data.csv' file in the root directory.");
-		System.out.println(".\n.");
 		System.out.println("[Enter] to continue...");
 
 		new BufferedReader(new InputStreamReader(System.in)).readLine();
@@ -36,15 +35,15 @@ public class JavaSqlAssignmentApplication {
 	}
 
 	private static void runThreadSelectionSequence() throws IOException {
-		System.out.println(".\n.\nFor single threaded process, enter 'single'.\nEnter anything else for multi threaded process.");
+		System.out.println("For single threaded process, enter 'single'.\nEnter anything else for multi threaded process.");
 		BufferedReader threadReader = new BufferedReader(new InputStreamReader(System.in));
 		
 		if(threadReader.readLine().equals("single")) {
-			System.out.println("Single threaded process started!\n.\n.");
+			System.out.println("Single threaded process started!");
 			runSingleThreadedProcess();
 		}
 		else {
-			System.out.println("Multi threaded process started!\n.\n.");
+			System.out.println("Multi threaded process started!");
 			runMultiThreadedProcess();
 		}
 	}
@@ -72,22 +71,11 @@ public class JavaSqlAssignmentApplication {
 
 	private static void runMultiThreadedProcess() {
 		try {
-			EmployeeValidator employeeValidator = new EmployeeValidator();
-
-			FileReader reader = new FileReader("employee_data.csv");
+			FileReader reader = new FileReader("employee_data_valid.csv");
 			CSVReaderBuilder builder = new CSVReaderBuilder(reader);
-			CSVReader csvReader = builder
-				.withLineValidator(employeeValidator)
-                .build();
+			CSVReader csvReader = builder.withLineValidator(new EmployeeValidator()).withSkipLines(1).build();
 
-			List<Employee> employees = new CsvToBeanBuilder<Employee>(csvReader)	
-				.withType(Employee.class)
-				.build()
-				.parse();
-	
-			for (Employee employee : employees) {
-				System.out.println(employee.Full_Name);
-			}
+			csvReader.readAll();
 		}
 		catch (Exception e) {
 			System.err.println(e);
