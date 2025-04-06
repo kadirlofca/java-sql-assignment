@@ -13,17 +13,17 @@ public class EmployeeValidator implements LineValidator {
     public EmployeeValidator() {
     }
 
-    public boolean satisfiesNotNull(String str) {
+    private boolean satisfiesNotNull(String str) {
         return str != null;
     }
 
-    public boolean satisfiesNoSpecialCharacters(String str) {
+    private boolean satisfiesNoSpecialCharacters(String str) {
         Pattern p = Pattern.compile("[^a-zA-Z ]");
         Matcher m = p.matcher(str);
         return !m.find();
     }
 
-    public boolean satisfiesEmail(String str) {
+    private boolean satisfiesEmail(String str) {
         String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@" +
                             "(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
     
