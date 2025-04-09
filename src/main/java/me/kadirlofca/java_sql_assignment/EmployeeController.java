@@ -12,6 +12,11 @@ public class EmployeeController {
     @Autowired
     private EmployeeRepository employeeRepository;
 
+    @GetMapping(path="/")
+    public @ResponseBody String getMain() {
+        return "The program is running. Please view the terminal for instructions.";
+    }
+
     @GetMapping(path="/employees")
     public @ResponseBody Iterable<Employee> getAllUsers() {
         return employeeRepository.findAll();

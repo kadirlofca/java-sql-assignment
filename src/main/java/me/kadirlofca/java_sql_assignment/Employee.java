@@ -2,7 +2,12 @@ package me.kadirlofca.java_sql_assignment;
 
 import com.opencsv.bean.CsvBindByName;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
+@Entity
 public class Employee {
+    @Id
     @CsvBindByName
     private String Employee_ID;
 
