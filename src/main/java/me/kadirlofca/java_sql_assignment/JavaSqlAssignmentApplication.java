@@ -5,15 +5,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.opencsv.CSVReader;
 import com.opencsv.CSVReaderBuilder;
-import com.opencsv.bean.CsvToBeanBuilder;
-import com.opencsv.exceptions.CsvValidationException;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.List;
 
 @SpringBootApplication
 public class JavaSqlAssignmentApplication {
