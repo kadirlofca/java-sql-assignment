@@ -1,7 +1,5 @@
 package me.kadirlofca.java_sql_assignment;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import com.opencsv.exceptions.CsvValidationException;
@@ -22,7 +20,7 @@ public class EmployeeValidator implements LineValidator {
         return !m.find();
     }
 
-    public static boolean satisfiesEmail(String str) {
+    public static boolean satisfiesEmailFormat(String str) {
         String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@" +
                             "(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
     
@@ -31,8 +29,8 @@ public class EmployeeValidator implements LineValidator {
     }
 
     public static boolean satisfiesDateFormats(String str) {
-        String dateReges = "^(?:(?:\d{4})-(?:0[1-9]|1[0-2])-(?:0[1-9]|[12][0-9]|3[01]))$|^(?:(?:0[1-9]|[12][0-9]|3[01])-(?:0[1-9]|1[0-2])-(?:\d{4}))$";
-        
+        // String dateReges = "^(?:(?:\d{4})-(?:0[1-9]|1[0-2])-(?:0[1-9]|[12][0-9]|3[01]))$|^(?:(?:0[1-9]|[12][0-9]|3[01])-(?:0[1-9]|1[0-2])-(?:\d{4}))$";
+        return false;        
     }
 
     @Override
@@ -48,10 +46,10 @@ public class EmployeeValidator implements LineValidator {
             return false;
         }
 
-        String email = columns[2];
-        if(!satisfiesEmail(email)){
-             return false;           
-        }     
+        // String email = columns[2];
+        // if(!satisfiesEmail(email)){
+        //      return false;           
+        // }     
 
         return true;
     }

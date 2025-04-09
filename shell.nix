@@ -19,5 +19,7 @@ pkgs.mkShell {
   nativeBuildInputs = with pkgs; [
     jdk
     maven
+    docker
+    docker-compose
   ];
 }
