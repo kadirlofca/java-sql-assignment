@@ -1,5 +1,7 @@
 package me.kadirlofca.java_sql_assignment;
 
+import java.util.HashSet;
+import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import com.opencsv.exceptions.CsvValidationException;
@@ -7,7 +9,13 @@ import com.opencsv.validators.LineValidator;
 
 public class EmployeeValidator implements LineValidator {
 
+    public static Set<String> validatedIds = new HashSet<String>();
+
     public EmployeeValidator() {
+    }
+
+    public static boolean satisfiesUniqueId(String id) {
+        return validatedIds.add(id);
     }
 
     public static boolean satisfiesNotNull(String str) {
@@ -40,6 +48,11 @@ public class EmployeeValidator implements LineValidator {
         }
 
         String[] columns = line.split(",");
+
+        String id = columns[0];
+        if(!satisfiesNotNull(id) || !satisfiesUniqueId(id)) {
+            return false;
+        }
 
         String fullName = columns[1];
         if(!satisfiesNotNull(fullName) || !satisfiesNoSpecialCharacters(fullName)){
