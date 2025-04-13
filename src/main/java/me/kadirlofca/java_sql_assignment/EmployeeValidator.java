@@ -7,27 +7,38 @@ import java.util.regex.Pattern;
 import com.opencsv.exceptions.CsvValidationException;
 import com.opencsv.validators.LineValidator;
 
+/**
+ * Contains logic for validating a row from the employee csv.
+ */
 public class EmployeeValidator implements LineValidator {
-
     public static Set<String> validatedIds = new HashSet<String>();
 
-    public EmployeeValidator() {
-    }
-
+    /**
+     * Validate string for unique ID constraint.
+     */
     public static boolean satisfiesUniqueId(String id) {
         return validatedIds.add(id);
     }
 
+    /**
+     * Validate string for not null constraint.
+     */
     public static boolean satisfiesNotNull(String str) {
         return str != null;
     }
 
+    /**
+     * Validate string for no special characters constraint.
+     */
     public static boolean satisfiesNoSpecialCharacters(String str) {
         Pattern p = Pattern.compile("[^a-zA-Z ]");
         Matcher m = p.matcher(str);
         return !m.find();
     }
 
+    /**
+     * Validate string for correct email format constraint.
+     */
     public static boolean satisfiesEmailFormat(String str) {
         String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@" +
                             "(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
@@ -36,11 +47,21 @@ public class EmployeeValidator implements LineValidator {
         return str != null && p.matcher(str).matches();
     }
 
+    /**
+     * Validate string for correct date format constraint.
+     */
     public static boolean satisfiesDateFormats(String str) {
         // String dateReges = "^(?:(?:\d{4})-(?:0[1-9]|1[0-2])-(?:0[1-9]|[12][0-9]|3[01]))$|^(?:(?:0[1-9]|[12][0-9]|3[01])-(?:0[1-9]|1[0-2])-(?:\d{4}))$";
         return false;        
     }
 
+    
+    /**
+     * Checks if row is valid.
+     * 
+     * @param line Row from the employee csv.
+     * @return True if all row columns are valid. False if row has any invalid column.
+     */
     @Override
     public boolean isValid(String line) {
         if (line == null) {
@@ -67,6 +88,9 @@ public class EmployeeValidator implements LineValidator {
         return true;
     }
 
+    /**
+     * Calls isValid() and throws exception if any invalid value is found.
+     */
     @Override
     public void validate(String line) throws CsvValidationException {
         if (!isValid(line)) {

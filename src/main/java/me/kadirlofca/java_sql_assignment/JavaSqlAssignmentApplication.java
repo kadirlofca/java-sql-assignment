@@ -11,13 +11,25 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+/**
+ * java-sql-assignment validates and extracts data from the employee csv.
+ * This class guides the user through the terminal to start the process.
+ */
 @SpringBootApplication
 public class JavaSqlAssignmentApplication {
 
+	/**
+	 * Checks if a "employee_data.csv" file exists in the root directory.
+	 * @return true if file with correct name exists.
+	 */
 	private static boolean isEmployeeDataFilePresent() {
 		return new File("employee_data.csv").isFile();
 	}
 
+	/**
+	 * Guides user through csv file requirement by printing to terminal. 
+	 * @throws IOException if invalid input is entered by user.
+	 */
 	private static void runFileValidationSequence() throws IOException {
 		System.out.println("If you haven't already, please exit this tool and place your 'employee_data.csv' file in the root directory.");
 		System.out.println("[Enter] to continue...");
@@ -30,6 +42,10 @@ public class JavaSqlAssignmentApplication {
 		}
 	}
 
+	/**
+	 * Guides user through thread selection process by printing to terminal.
+	 * @throws IOException if invalid input is entered by user.
+	 */
 	private static void runThreadSelectionSequence() throws IOException {
 		System.out.println("For single threaded process, enter 'single'.\nEnter anything else for multi threaded process.");
 		BufferedReader threadReader = new BufferedReader(new InputStreamReader(System.in));
@@ -44,27 +60,16 @@ public class JavaSqlAssignmentApplication {
 		}
 	}
 
+	/**
+	 * Runs single threaded process.
+	 */
 	private static void runSingleThreadedProcess() {
 		System.out.println("Single threaded not implemented yet.");
-		
-		// try {
-		// 	CSVReader reader = new CSVReaderBuilder(new FileReader("employee_data.csv")).build();
-		// 	for(String[] nextLine : reader) {
-		// 		System.out.println(nextLine[0] + nextLine[1] + "etc...");
-		// 	}
-		// }
-		// catch (Exception e) {
-		// 	System.err.println(e);
-		// }
-
-		// CSVReader reader = new CSVReaderBuilder(new FileReader("dataset.csv")).build();
-		// CSVIterator iterator = new CSVIterator(reader);
-		// for(String[] nextLine : iterator) {
-		// 	// nextLine[] is an array of values from the line
-		// 	System.out.println(nextLine[0] + nextLine[1] + "etc...");
-     	// }
 	}
 
+	/**
+	 * Runs multi threaded process.
+	 */
 	private static void runMultiThreadedProcess() {
 		try {
 			FileReader reader = new FileReader("employee_data_valid.csv");
@@ -78,6 +83,9 @@ public class JavaSqlAssignmentApplication {
 		}
 	}
 
+	/*
+	 * Runs pre-process sequences.
+	 */
 	public static void main(String[] args) {
 		SpringApplication.run(JavaSqlAssignmentApplication.class, args);
 

@@ -5,6 +5,9 @@ import com.opencsv.bean.CsvBindByName;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
+/**
+ *  Holds columns from the Employee table.
+ */
 @Entity
 public class Employee {
     @Id
