@@ -68,6 +68,11 @@ public class JavaSqlAssignmentApplication {
 		System.out.println("Single threaded not implemented yet.");
 	}
 
+	/**
+	 * Initializes and returns employee from an array of strings.
+	 * @param columns String array containing employee data.
+	 * @return New Employee object.
+	 */
     private static Employee makeEmployeeFromStringArray(String[] columns) {
         return new Employee(
                 columns[0],   // Employee_ID
@@ -93,7 +98,11 @@ public class JavaSqlAssignmentApplication {
         );
     }
 
-	private static void insertValidatedEmployeesToDatabase(List<String[]> ValidatedEmployees){
+	/**
+	 * Inserts all employees into the EmployeeRepository.
+	 * @param ValidatedEmployees List of employees (String arrays).
+	 */
+	private static void insertValidatedEmployeesToRepository(List<String[]> ValidatedEmployees){
 		Employee newEmployee = makeEmployeeFromStringArray(ValidatedEmployees.get(0));
 		EmployeeController.employeeRepository.save(newEmployee);
 	}
