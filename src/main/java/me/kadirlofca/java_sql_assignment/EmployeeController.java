@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(path="/")
 public class EmployeeController {
     @Autowired
-    private EmployeeRepository employeeRepository;
+    public static EmployeeRepository employeeRepository;
 
     /**
      *  Displays a message that confirms the program is running.
