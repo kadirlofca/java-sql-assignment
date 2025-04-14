@@ -16,12 +16,12 @@ import java.time.format.DateTimeParseException;
  * Contains logic for validating a row from the employee csv.
  */
 public class EmployeeValidator implements LineValidator {
-    public static Set<String> validatedIds = new HashSet<String>();
+    public static Set<String> validIds = new HashSet<String>();
 
     /**
      * Validate string for unique ID constraint.
      */
-    public static boolean satisfiesUniqueId(String id) {
+    public static boolean satisfiesUniqueId(String id, Set<String> validatedIds) {
         return validatedIds.add(id);
     }
 
@@ -89,7 +89,7 @@ public class EmployeeValidator implements LineValidator {
         String[] columns = line.split(",");
 
         String id = columns[0];
-        if(!satisfiesNotNull(id) || !satisfiesUniqueId(id)) {
+        if(!satisfiesNotNull(id) || !satisfiesUniqueId(id, validIds)) {
             return false;
         }
 
